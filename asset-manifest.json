@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.ba471f4e.css",
-    "main.js": "./static/js/main.44d7cfc7.js",
+    "main.css": "./static/css/main.0d9624d4.css",
+    "main.js": "./static/js/main.a64da813.js",
     "static/media/NEXONFOOTBALLGOTHICL.TTF": "./static/media/NEXONFOOTBALLGOTHICL.f5c65111ecb330d5027d.TTF",
     "static/media/NEXONFOOTBALLGOTHICB.TTF": "./static/media/NEXONFOOTBALLGOTHICB.aefd0e619ab58db2e1d4.TTF",
     "static/media/classfc-logo.png": "./static/media/classfc-logo.c6b58a2f1c87775c3903.png",
     "index.html": "./index.html",
-    "main.ba471f4e.css.map": "./static/css/main.ba471f4e.css.map",
-    "main.44d7cfc7.js.map": "./static/js/main.44d7cfc7.js.map"
+    "main.0d9624d4.css.map": "./static/css/main.0d9624d4.css.map",
+    "main.a64da813.js.map": "./static/js/main.a64da813.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba471f4e.css",
-    "static/js/main.44d7cfc7.js"
+    "static/css/main.0d9624d4.css",
+    "static/js/main.a64da813.js"
   ]
 }
