@@ -8,7 +8,6 @@ import "../styles/home.css";
 function Home({ setPage, user, members, matches, notices, gallery }) {
   const [, setTick] = useState(0);
   const [galleryOffset, setGalleryOffset] = useState(0);
-  const [galleryPaused, setGalleryPaused] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => setTick((t) => t + 1), 1000);
@@ -16,12 +15,12 @@ function Home({ setPage, user, members, matches, notices, gallery }) {
   }, []);
 
   useEffect(() => {
-    if (galleryPaused || gallery.length === 0) return;
+    if (gallery.length === 0) return;
     const id = setInterval(() => {
       setGalleryOffset((o) => (o + 1) % gallery.length);
-    }, 3500);
+    }, 6000);
     return () => clearInterval(id);
-  }, [galleryPaused, gallery.length]);
+  }, [gallery.length]);
 
   const nowMs = Date.now();
   const upcoming = matches
@@ -162,8 +161,6 @@ function Home({ setPage, user, members, matches, notices, gallery }) {
 
           <div
             className="gallery-preview-grid"
-            onMouseEnter={() => setGalleryPaused(true)}
-            onMouseLeave={() => setGalleryPaused(false)}
           >
             {previewGallery.map((g, i) => {
                 const isYt = g.mediaType === "youtube";
@@ -191,21 +188,16 @@ function Home({ setPage, user, members, matches, notices, gallery }) {
                 );
               })}
           </div>
-
-          {gallery.length > 0 && (
+            {gallery.length > 0 && (
             <div className="gallery-slide-dots">
-              {gallery.map((g, i) => (
+              {previewGallery.map((g, i) => (
                 <span
                   key={i}
-                  className={i === galleryOffset ? "slide-dot active" : "slide-dot"}
-                  onClick={() => setGalleryOffset(i)}
+                  className={i === 0 ? "slide-dot active" : "slide-dot"}
                 ></span>
               ))}
-              <span className="slide-pause-hint">
-                {galleryPaused ? "⏸ 일시정지" : "▶ 자동 슬라이드"}
-              </span>
             </div>
-          )}
+            )}
         </div>
       </section>
 
