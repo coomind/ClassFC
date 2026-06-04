@@ -24,17 +24,15 @@ function Footer() {
 
           <div className="fc-footer-col">
             <div className="fc-footer-heading">CONTACT</div>
-            <div className="fc-footer-line">classfc@university.ac.kr</div>
-            <div className="fc-footer-line">매주 목요일 20:00</div>
-            <div className="fc-footer-line">공학관 5층 세미나실</div>
+            <div className="fc-footer-line">충북대학교 S4-1</div>
           </div>
 
           <div className="fc-footer-col">
             <div className="fc-footer-heading">FOLLOW</div>
             <div className="fc-sns-row">
-              <span className="fc-sns">IG</span>
-              <span className="fc-sns">YT</span>
-              <span className="fc-sns">GH</span>
+               <a className="fc-sns" href="https://www.instagram.com/class2013_/" target="_blank" rel="noopener noreferrer">IG</a>
+               <a className="fc-sns" href="https://youtube.com/channel/UCky2vFwGrVyndn-LpSYrkYg?si=9TNYXu1-A7y0fokE" target="_blank" rel="noopener noreferrer">YT</a>
+               <a className="fc-sns" href="https://github.com/coomind/ClassFC" target="_blank" rel="noopener noreferrer">GH</a>
             </div>
           </div>
         </div>
