@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { youtubeThumb } from "../data/youtube";
 import MatchCard from "../components/MatchCard";
 import NoticeCard from "../components/NoticeCard";
 import logo from "../assets/classfc-logo.png";
@@ -164,19 +165,31 @@ function Home({ setPage, user, members, matches, notices, gallery }) {
             onMouseEnter={() => setGalleryPaused(true)}
             onMouseLeave={() => setGalleryPaused(false)}
           >
-            {previewGallery.map((g, i) => (
-              <div
-                key={`${g.id}-${i}`}
-                className={`gallery-preview-tile tile-${i}`}
-                style={{ background: g.gradient }}
-                onClick={() => setPage("gallery")}
-              >
-                <div className="gallery-tile-overlay">
-                  <div className="gallery-tile-tag">{g.tag}</div>
-                  <div className="gallery-tile-title">{g.title}</div>
-                </div>
-              </div>
-            ))}
+            {previewGallery.map((g, i) => {
+                const isYt = g.mediaType === "youtube";
+                const cover = isYt ? youtubeThumb(g.imageUrl) : g.imageUrl;
+                const tileStyle = cover
+                  ? {
+                      backgroundImage: "url(" + cover + ")",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }
+                  : { background: g.gradient };
+                return (
+                  <div
+                    key={g.id}
+                    className={`gallery-preview-tile tile-${i}`}
+                    style={tileStyle}
+                    onClick={() => setPage("gallery")}
+                  >
+                    {isYt && <div className="gallery-tile-play">▶</div>}
+                    <div className="gallery-tile-overlay">
+                      <div className="gallery-tile-tag">{g.tag}</div>
+                      <div className="gallery-tile-title">{g.title}</div>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
 
           {gallery.length > 0 && (
