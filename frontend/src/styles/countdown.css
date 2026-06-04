@@ -1,0 +1,136 @@
+.countdown-banner {
+    position: fixed;
+    top: 78px;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background-color: var(--navy);
+    border-bottom: 1px solid var(--color);
+}
+
+.countdown-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.cb-left {
+    color: white;
+    font-size: 0.85rem;
+}
+
+.cb-left > * {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.cb-pulse {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: var(--color);
+}
+
+.cb-label {
+    display: inline-block;
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.cb-vs {
+    color: lightgray;
+}
+
+.cb-vs strong {
+    color: white;
+}
+
+.cb-meta {
+    color: var(--gray);
+    font-size: 0.78rem;
+}
+
+.cb-right {
+    display: inline-block;
+}
+
+.cb-counter {
+    display: inline-block;
+}
+
+.cb-cell {
+    display: inline-block;
+    background-color: var(--bg);
+    border-radius: 4px;
+    padding: 4px 9px;
+    min-width: 46px;
+    text-align: center;
+    margin-right: 4px;
+}
+
+.cb-cell span {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    color: var(--light);
+    font-size: 1.05rem;
+}
+
+.cb-cell em {
+    font-style: normal;
+    font-size: 0.6rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-left: 3px;
+}
+
+.cb-cta {
+    background-color: transparent;
+    border: 1px solid var(--color);
+    color: var(--light);
+    padding: 6px 14px;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-left: 14px;
+}
+
+.cb-cta:hover {
+    background-color: var(--color);
+    color: var(--bg);
+}
+
+.cb-close {
+    background-color: transparent;
+    border: none;
+    color: var(--gray);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 6px;
+    margin-left: 6px;
+}
+
+.cb-close:hover {
+    color: var(--danger);
+}
+
+.app-main.with-banner {
+    padding-top: 130px;
+}
+
+@media (max-width: 900px) {
+    .countdown-banner-inner { flex-direction: column; align-items: flex-start; }
+    .cb-meta { display: none; }
+    .cb-right { width: 100%; text-align: right; }
+    .cb-cta { display: none; }
+    .app-main.with-banner { padding-top: 170px; }
+}

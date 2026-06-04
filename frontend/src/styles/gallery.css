@@ -1,0 +1,245 @@
+.gallery-page {
+    min-height: 80vh;
+}
+
+.gallery-filter-row {
+    margin-bottom: 30px;
+}
+
+.gal-tag-btn {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    padding: 9px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.gal-tag-btn:hover {
+    border-color: var(--color);
+    color: white;
+}
+
+.gal-tag-btn.active {
+    background-color: var(--color);
+    color: var(--bg);
+    border-color: var(--color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.gallery-tile {
+    width: 100%;
+    height: 240px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+}
+
+.gallery-tile.has-cover {
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-tile:hover {
+    opacity: 0.95;
+}
+
+.gallery-tile-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 1.5rem;
+    line-height: 60px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.gallery-tile-icon {
+    font-size: 4rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -2rem;
+    margin-left: -2rem;
+    opacity: 0.4;
+}
+
+.gallery-tile-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 18px;
+    text-align: left;
+}
+
+.gtile-tag {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.gtile-title {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.gtile-date {
+    color: lightgray;
+    font-size: 0.75rem;
+}
+
+.gallery-empty {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--gray);
+}
+
+.gallery-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery-modal-box {
+    background-color: var(--navy);
+    border-radius: 10px;
+    max-width: 720px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--dark-gray);
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    line-height: 32px;
+    z-index: 2;
+}
+
+.gallery-modal-close:hover {
+    background-color: var(--danger);
+}
+
+.gallery-modal-image {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.gallery-modal-icon {
+    font-size: 7rem;
+    color: white;
+    opacity: 0.5;
+    line-height: 400px;
+}
+
+.gallery-modal-photo {
+    width: 100%;
+    background-color: black;
+    text-align: center;
+}
+
+.gallery-modal-photo img {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery-modal-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: black;
+}
+
+.gallery-modal-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.gallery-modal-info {
+    padding: 24px 30px;
+}
+
+.gallery-modal-tag {
+    display: inline-block;
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.gallery-modal-title {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.gallery-modal-date {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-modal-image { height: 280px; }
+    .gallery-modal-icon { line-height: 280px; }
+}

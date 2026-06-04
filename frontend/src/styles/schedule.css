@@ -1,0 +1,457 @@
+.schedule-page {
+    min-height: 80vh;
+}
+
+.sport-filter-row {
+    margin-bottom: 24px;
+}
+
+.sport-filter-btn {
+    display: inline-block;
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: 6px;
+}
+
+.sport-filter-btn:hover {
+    border-color: var(--color);
+    color: white;
+}
+
+.sport-filter-btn.active {
+    background-color: var(--color);
+    color: var(--bg);
+    border-color: var(--color);
+}
+
+.schedule-stats-row {
+    display: flex;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.schedule-stat-card {
+    flex: 1;
+    min-width: 110px;
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    margin: 6px;
+}
+
+.ss-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.ss-label {
+    color: var(--gray);
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+}
+
+.schedule-tabs {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.sched-tab {
+    background-color: transparent;
+    border: none;
+    color: var(--gray);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    padding: 14px 24px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.sched-tab:hover {
+    color: white;
+}
+
+.sched-tab.active {
+    color: var(--light);
+    border-bottom: 2px solid var(--color);
+}
+
+.match-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.match-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.match-date-big {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+    color: white;
+}
+
+.match-date-day {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.match-tags {
+    text-align: right;
+}
+
+.match-type-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.type-league { background-color: var(--color); color: var(--bg); }
+.type-cup { background-color: var(--accent); color: var(--bg); }
+.type-friendly { background-color: #4a90e2; color: white; }
+
+.match-result-tag, .match-upcoming-tag {
+    display: block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.result-win { background-color: var(--color); color: var(--bg); }
+.result-loss { background-color: var(--danger); color: white; }
+.result-draw { background-color: var(--dark-gray); color: white; }
+
+.match-upcoming-tag {
+    background-color: var(--card);
+    color: lightgray;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    padding: 18px 0;
+    border-top: 1px solid var(--dark-gray);
+    border-bottom: 1px solid var(--dark-gray);
+    margin-bottom: 16px;
+}
+
+.match-team-home, .match-team-away {
+    flex: 1;
+    text-align: center;
+}
+
+.match-team-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+}
+
+.match-team-sub {
+    color: var(--gray);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+.match-vs {
+    text-align: center;
+    min-width: 80px;
+}
+
+.match-vs-text {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--gray);
+}
+
+.match-score {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: white;
+    text-align: center;
+}
+
+.score-ours { color: var(--light); }
+.score-theirs { color: white; }
+.score-dash { color: var(--dark-gray); margin: 0 6px; }
+
+.match-venue {
+    color: lightgray;
+    font-size: 0.85rem;
+}
+
+.venue-pin {
+    color: var(--color);
+    font-size: 0.5rem;
+    margin-right: 8px;
+}
+
+.venue-side {
+    float: right;
+    padding: 2px 8px;
+    background-color: var(--card);
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.match-rsvp {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rsvp-counts {
+    display: inline-block;
+}
+
+.rsvp-count-ok {
+    color: var(--light);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.rsvp-count-late {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.rsvp-actions {
+    display: inline-block;
+}
+
+.rsvp-btn {
+    background-color: rgba(0, 209, 102, 0.1);
+    border: 1px solid var(--color);
+    color: var(--light);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.rsvp-btn:hover {
+    background-color: rgba(0, 209, 102, 0.18);
+}
+
+.rsvp-btn.active {
+    background-color: var(--color);
+    color: var(--bg);
+}
+
+.rsvp-btn.late {
+    background-color: rgba(245, 166, 35, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.rsvp-btn.late.active {
+    background-color: var(--accent);
+    color: var(--bg);
+}
+
+.rsvp-cancel-btn {
+    background-color: transparent;
+    border: 1px solid var(--dark-gray);
+    color: var(--gray);
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.rsvp-cancel-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.match-motm {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.motm-winner-row {
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+}
+
+.motm-icon {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-right: 8px;
+}
+
+.motm-label {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-right: 8px;
+}
+
+.motm-name {
+    color: white;
+    font-weight: 700;
+}
+
+.motm-votes {
+    color: var(--gray);
+    font-size: 0.78rem;
+    float: right;
+}
+
+.motm-empty {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.motm-vote-btn {
+    width: 100%;
+    background-color: transparent;
+    border: 1px dashed var(--accent);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.motm-vote-btn:hover {
+    background-color: rgba(245, 166, 35, 0.1);
+}
+
+.motm-vote-panel {
+    background-color: var(--bg);
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+.motm-panel-title {
+    color: lightgray;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.motm-player-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.motm-pick {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    padding: 8px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.motm-pick:hover {
+    border-color: var(--color);
+    color: white;
+}
+
+.motm-pick.active {
+    background-color: var(--color);
+    color: var(--bg);
+    border-color: var(--color);
+    font-weight: 700;
+}
+
+.motm-pick-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    color: var(--light);
+    margin-right: 8px;
+}
+
+.motm-pick.active .motm-pick-num {
+    color: var(--bg);
+}
+
+.motm-pick-name {
+    margin-right: 8px;
+}
+
+.motm-pick-pos {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    float: right;
+}
+
+.motm-close-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--gray);
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.motm-close-btn:hover {
+    color: white;
+}
+
+.schedule-empty {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .schedule-stat-card { min-width: 30%; }
+}

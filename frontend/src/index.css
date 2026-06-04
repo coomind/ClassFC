@@ -1,0 +1,267 @@
+@font-face {
+    font-family: 'NEXON Football Gothic';
+    src: local('NEXONFOOTBALLGOTHICL'),
+         url('./assets/fonts/NEXONFOOTBALLGOTHICL.TTF');
+    font-weight: 300 500;
+}
+@font-face {
+    font-family: 'NEXON Football Gothic';
+    src: local('NEXONFOOTBALLGOTHICB'),
+         url('./assets/fonts/NEXONFOOTBALLGOTHICB.TTF');
+    font-weight: 600 900;
+}
+
+:root {
+    --bg: #050b18;
+    --color: #00d166;
+    --light: #65f4a2;
+    --accent: #f5a623;
+    --card: #0f1f33;
+    --navy: #112940;
+    --gray: #8a96a8;
+    --dark-gray: #4a5566;
+    --danger: #ff4d5e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: white;
+    font-family: 'NEXON Football Gothic', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+a {
+    color: var(--light);
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
+
+button {
+    font-family: inherit;
+}
+
+.app-main {
+    flex: 1;
+    padding-top: 78px;
+}
+
+.page-section {
+    padding: 60px 0 80px;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.green-accent {
+    color: var(--light);
+}
+
+.btn-primary-green {
+    background-color: var(--color);
+    border: none;
+    color: var(--bg);
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.btn-primary-green:hover {
+    background-color: var(--light);
+    color: var(--bg);
+}
+
+.btn-outline-green {
+    background-color: transparent;
+    border: 2px solid var(--color);
+    color: var(--light);
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-outline-green:hover {
+    background-color: var(--color);
+    color: var(--bg);
+}
+
+.card-fc {
+    background-color: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.card-fc:hover {
+    border-color: var(--color);
+}
+
+.badge-green {
+    background-color: rgba(0, 209, 102, 0.15);
+    color: var(--light);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-red {
+    background-color: rgba(255, 77, 94, 0.15);
+    color: var(--danger);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.divider-line {
+    height: 1px;
+    background-color: var(--color);
+    margin: 20px 0;
+}
+
+.form-control-fc {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.form-control-fc:focus {
+    outline: none;
+    border-color: var(--color);
+}
+
+.form-control-fc::placeholder {
+    color: var(--dark-gray);
+}
+
+.label-fc {
+    color: lightgray;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+}
+
+.text-secondary {
+    color: var(--gray) !important;
+}
+
+.app-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg);
+    text-align: center;
+    z-index: 1000;
+    padding-top: 25vh;
+}
+
+.app-loading-inner {
+    max-width: 380px;
+    margin: auto;
+    padding: 30px;
+}
+
+.app-loading-logo {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 16px;
+}
+
+.app-loading-title {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: white;
+    margin-bottom: 18px;
+}
+
+.app-loading-spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid var(--card);
+    border-top: 3px solid var(--color);
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.app-loading-text {
+    color: lightgray;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.app-loading-hint {
+    color: var(--dark-gray);
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.app-loading-err {
+    background-color: rgba(255, 77, 94, 0.1);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin: 12px 0;
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .section-title { font-size: 2.2rem; }
+    .page-section { padding: 40px 0 60px; }
+}

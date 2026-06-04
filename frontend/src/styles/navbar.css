@@ -1,0 +1,165 @@
+.fc-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--card);
+}
+
+.fc-navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+}
+
+.fc-brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fc-brand-logo {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+}
+
+.fc-brand-text {
+    display: inline-block;
+}
+
+.fc-brand-title {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.fc-brand-sub {
+    font-size: 0.65rem;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+}
+
+.fc-nav {
+    display: flex;
+    align-items: center;
+}
+
+.fc-nav-link {
+    background-color: transparent;
+    border: none;
+    color: lightgray;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 10px 14px;
+    cursor: pointer;
+    position: relative;
+}
+
+.fc-nav-link:hover {
+    color: var(--light);
+}
+
+.fc-nav-link.active {
+    color: var(--light);
+    border-bottom: 2px solid var(--color);
+}
+
+.fc-nav-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--dark-gray);
+    margin: 0 8px;
+}
+
+.fc-login-btn {
+    background-color: var(--color);
+    border: none;
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    padding: 9px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fc-login-btn:hover {
+    background-color: var(--light);
+}
+
+.fc-user-area {
+    display: inline-block;
+}
+
+.fc-user-name {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.fc-logout-btn {
+    background-color: transparent;
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    padding: 7px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fc-logout-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.fc-burger {
+    display: none;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.fc-burger span {
+    width: 26px;
+    height: 2px;
+    background-color: white;
+    display: block;
+    margin: 5px 0;
+}
+
+@media (max-width: 900px) {
+    .fc-burger {
+        display: inline-block;
+    }
+    .fc-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 24px;
+        display: none;
+    }
+    .fc-nav.open {
+        display: flex;
+    }
+    .fc-nav-link {
+        text-align: left;
+        padding: 12px 8px;
+    }
+    .fc-brand-sub {
+        display: none;
+    }
+}

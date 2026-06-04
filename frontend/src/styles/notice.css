@@ -1,0 +1,340 @@
+.notice-page {
+    min-height: 80vh;
+}
+
+.notice-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.notice-cat-row {
+    display: inline-block;
+}
+
+.cat-filter-btn {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.cat-filter-btn:hover {
+    border-color: var(--color);
+    color: white;
+}
+
+.cat-filter-btn.active {
+    background-color: var(--color);
+    color: var(--bg);
+    border-color: var(--color);
+}
+
+.notice-search {
+    max-width: 280px;
+    padding: 9px 14px;
+}
+
+.notice-card {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.notice-card.compact {
+    padding: 16px;
+}
+
+.notice-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.notice-tags {
+    display: inline-block;
+}
+
+.notice-pin-tag {
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-right: 6px;
+}
+
+.notice-cat-tag {
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 6px;
+}
+
+.notice-imp-tag {
+    background-color: var(--danger);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.notice-date {
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+.notice-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.notice-preview {
+    color: lightgray;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    flex: 1;
+}
+
+.notice-author {
+    color: var(--gray);
+    font-size: 0.78rem;
+    padding-top: 12px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.notice-empty {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--gray);
+}
+
+.notice-detail-page {
+    max-width: 880px;
+}
+
+.notice-back-btn {
+    margin-bottom: 24px;
+}
+
+.notice-detail-card {
+    padding: 40px;
+    cursor: default;
+}
+
+.notice-detail-card:hover {
+    border-color: var(--dark-gray);
+}
+
+.notice-detail-head .notice-tags {
+    margin-bottom: 18px;
+}
+
+.notice-detail-title {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.notice-detail-meta {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.notice-detail-meta strong {
+    color: white;
+}
+
+.meta-dot {
+    color: var(--dark-gray);
+    margin: 0 8px;
+}
+
+.notice-detail-body {
+    color: lightgray;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    margin-top: 12px;
+}
+
+.notice-admin-hint {
+    margin-top: 40px;
+    padding: 16px;
+    background-color: var(--card);
+    border: 1px dashed var(--color);
+    border-radius: 4px;
+    color: var(--light);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.comments-section {
+    margin-top: 28px;
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 8px;
+    padding: 28px;
+}
+
+.comments-title {
+    color: white;
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.comments-empty {
+    color: var(--gray);
+    font-size: 0.9rem;
+    padding: 20px 0;
+    text-align: center;
+    font-style: italic;
+}
+
+.comments-list {
+    margin-bottom: 20px;
+}
+
+.comment-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.comment-item:last-child {
+    border-bottom: none;
+}
+
+.comment-head {
+    margin-bottom: 6px;
+}
+
+.comment-author {
+    color: var(--light);
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-right: 10px;
+}
+
+.comment-date {
+    color: var(--dark-gray);
+    font-size: 0.75rem;
+}
+
+.comment-delete {
+    float: right;
+    background-color: transparent;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.comment-delete:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+.comment-text {
+    color: lightgray;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.comment-form {
+    margin-top: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.comment-form-user {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.comment-form-num {
+    color: var(--light);
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    margin-right: 8px;
+}
+
+.comment-form-name {
+    color: white;
+    font-weight: 700;
+}
+
+.comment-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.comment-form-actions {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.comment-submit {
+    padding: 8px 22px;
+    font-size: 0.85rem;
+}
+
+.comments-login-hint {
+    margin-top: 14px;
+    padding: 14px;
+    text-align: center;
+    background-color: var(--card);
+    border-radius: 4px;
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.comments-locked {
+    margin-top: 28px;
+    padding: 18px;
+    background-color: var(--card);
+    border: 1px dashed var(--dark-gray);
+    border-radius: 6px;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 768px) {
+    .notice-toolbar { flex-direction: column; align-items: stretch; }
+    .notice-search { max-width: none; }
+    .notice-detail-card { padding: 24px; }
+    .notice-detail-title { font-size: 1.4rem; }
+}

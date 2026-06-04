@@ -1,0 +1,173 @@
+.stats-page {
+    min-height: 80vh;
+}
+
+.stats-tabs {
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.stats-tab {
+    background-color: transparent;
+    border: none;
+    color: var(--gray);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    padding: 14px 22px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.stats-tab:hover {
+    color: white;
+}
+
+.stats-tab.active {
+    color: var(--light);
+    border-bottom: 2px solid var(--color);
+}
+
+.stats-table-wrap {
+    padding: 6px 0;
+    overflow-x: auto;
+}
+
+.stats-table-wrap:hover {
+    border-color: var(--dark-gray);
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.stats-table th {
+    text-align: left;
+    padding: 14px 16px;
+    color: var(--gray);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.stats-table td {
+    padding: 16px;
+    color: lightgray;
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--card);
+}
+
+.stats-table tr:last-child td {
+    border-bottom: none;
+}
+
+.stats-table tr:hover td {
+    background-color: var(--card);
+}
+
+.num-col {
+    text-align: center;
+    width: 70px;
+}
+
+.rank-col {
+    width: 50px;
+    text-align: center;
+}
+
+.current-col {
+    background-color: var(--card);
+    color: var(--light);
+    font-size: 1.1rem;
+}
+
+.rank-pill {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--dark-gray);
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    color: lightgray;
+    font-size: 0.9rem;
+}
+
+.rank-1 .rank-pill {
+    background-color: gold;
+    color: var(--bg);
+}
+
+.rank-2 .rank-pill {
+    background-color: silver;
+    color: var(--bg);
+}
+
+.rank-3 .rank-pill {
+    background-color: #cd7f32;
+    color: white;
+}
+
+.stats-player {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.stats-player-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--light);
+    min-width: 50px;
+}
+
+.stats-player-name {
+    font-weight: 700;
+    color: white;
+    font-size: 1rem;
+}
+
+.stats-player-en {
+    color: var(--gray);
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.stats-role {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.stats-pos-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+}
+
+.stats-note {
+    margin-top: 20px;
+    color: var(--gray);
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .stats-tab { padding: 12px 14px; font-size: 0.8rem; }
+    .stats-table { font-size: 0.85rem; }
+}

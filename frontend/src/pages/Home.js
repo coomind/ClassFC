@@ -1,0 +1,261 @@
+import { useState, useEffect } from "react";
+import MatchCard from "../components/MatchCard";
+import NoticeCard from "../components/NoticeCard";
+import logo from "../assets/classfc-logo.png";
+import "../styles/home.css";
+
+function Home({ setPage, user, members, matches, notices, gallery }) {
+  const [, setTick] = useState(0);
+  const [galleryOffset, setGalleryOffset] = useState(0);
+  const [galleryPaused, setGalleryPaused] = useState(false);
+
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => t + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (galleryPaused || gallery.length === 0) return;
+    const id = setInterval(() => {
+      setGalleryOffset((o) => (o + 1) % gallery.length);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [galleryPaused, gallery.length]);
+
+  const nowMs = Date.now();
+  const upcoming = matches
+    .filter((m) => m.status === "upcoming")
+    .filter((m) => new Date(`${m.date}T${m.time}:00`).getTime() > nowMs)
+    .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+  const nextMatch = upcoming[0];
+
+  const recentNotices = [...notices].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const previewGallery = gallery.length
+    ? Array.from(
+        { length: Math.min(5, gallery.length) },
+        (_, i) => gallery[(galleryOffset + i) % gallery.length]
+      )
+    : [];
+
+  const totalGoals = members.reduce((s, m) => s + (m.goals || 0), 0);
+  const totalMatches = matches.filter((m) => m.status === "finished").length;
+  const wins = matches.filter((m) => m.status === "finished" && m.scoreOurs > m.scoreTheirs).length;
+
+  let countdown = "경기 정보 없음";
+  if (nextMatch) {
+    const target = new Date(`${nextMatch.date}T${nextMatch.time}:00`).getTime();
+    const diff = target - Date.now();
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      countdown = `${days}일 ${hours}시간 ${mins}분 ${secs}초`;
+    } else {
+      countdown = "경기 진행 중";
+    }
+  }
+
+  return (
+    <div className="home-page">
+      <section className="hero-section">
+        <img src={logo} alt="" className="hero-watermark" />
+        <div className="container hero-inner">
+          <div className="hero-crest-row">
+            <img src={logo} alt="CLASS FC" className="hero-crest" />
+          </div>
+          <div className="hero-meta">
+            <span className="hero-est">EST. 2013</span>
+            <span className="hero-dot">·</span>
+            <span className="hero-dept">DEPT. OF SOFTWARE</span>
+          </div>
+          <h1 className="hero-title">
+            CLASS <span className="green-accent">FC</span>
+          </h1>
+          <div className="hero-slogan">"Building the digital home of our football family."</div>
+          <div className="hero-sub">소프트웨어학과 축구 동아리 공식 웹사이트</div>
+
+          <div className="hero-buttons">
+            <button className="btn-primary-green" onClick={() => setPage("schedule")}>
+              NEXT MATCH →
+            </button>
+            <button className="btn-outline-green" onClick={() => setPage("members")}>
+              MEET THE TEAM
+            </button>
+          </div>
+
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-num">{members.length}</div>
+              <div className="hero-stat-label">PLAYERS</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-num">{totalMatches}</div>
+              <div className="hero-stat-label">MATCHES</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-num">{wins}</div>
+              <div className="hero-stat-label">WINS</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-num">{totalGoals}</div>
+              <div className="hero-stat-label">GOALS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {nextMatch && (
+        <section className="next-match-section">
+          <div className="container">
+            <div className="next-match-row">
+              <div className="next-match-label">
+                <div className="badge-green">NEXT MATCH</div>
+                <h3 className="next-match-title">다가오는 경기까지</h3>
+                <div className="countdown-text">{countdown}</div>
+                <button className="btn-outline-green mt-3" onClick={() => setPage("schedule")}>
+                  전체 일정 보기
+                </button>
+              </div>
+              <div className="next-match-card-wrap">
+                <MatchCard match={nextMatch} user={user} members={members} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="home-section">
+        <div className="container">
+          <div className="home-section-head">
+            <div>
+              <div className="section-subtitle">LATEST</div>
+              <h2 className="section-title">최근 공지</h2>
+            </div>
+            <button className="link-arrow" onClick={() => setPage("notice")}>
+              ALL NOTICES →
+            </button>
+          </div>
+
+          <div className="row g-4">
+            {recentNotices.map((n) => (
+              <div className="col-md-4" key={n.id}>
+                <NoticeCard notice={n} compact={false} onClick={() => setPage("notice")} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section gallery-preview-section">
+        <div className="container">
+          <div className="home-section-head">
+            <div>
+              <div className="section-subtitle">MEMORIES</div>
+              <h2 className="section-title">갤러리 미리보기</h2>
+            </div>
+            <button className="link-arrow" onClick={() => setPage("gallery")}>
+              VIEW ALL →
+            </button>
+          </div>
+
+          <div
+            className="gallery-preview-grid"
+            onMouseEnter={() => setGalleryPaused(true)}
+            onMouseLeave={() => setGalleryPaused(false)}
+          >
+            {previewGallery.map((g, i) => (
+              <div
+                key={`${g.id}-${i}`}
+                className={`gallery-preview-tile tile-${i}`}
+                style={{ background: g.gradient }}
+                onClick={() => setPage("gallery")}
+              >
+                <div className="gallery-tile-overlay">
+                  <div className="gallery-tile-tag">{g.tag}</div>
+                  <div className="gallery-tile-title">{g.title}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {gallery.length > 0 && (
+            <div className="gallery-slide-dots">
+              {gallery.map((g, i) => (
+                <span
+                  key={i}
+                  className={i === galleryOffset ? "slide-dot active" : "slide-dot"}
+                  onClick={() => setGalleryOffset(i)}
+                ></span>
+              ))}
+              <span className="slide-pause-hint">
+                {galleryPaused ? "⏸ 일시정지" : "▶ 자동 슬라이드"}
+              </span>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="home-cta-section">
+        <div className="container">
+          <div className="home-cta-box">
+            <div>
+              <div className="badge-green">JOIN US</div>
+              <h2 className="cta-title">함께 뛸 사람을 찾습니다.</h2>
+              <p className="cta-desc">
+                실력보다 중요한 건 동료와 함께한다는 것. 신입 부원은 언제든 환영입니다.
+              </p>
+            </div>
+            <div className="home-cta-action">
+              {user ? (
+                <button className="btn-primary-green" onClick={() => setPage("notice")}>
+                  공지 확인하기
+                </button>
+              ) : (
+                <button className="btn-primary-green" onClick={() => setPage("login")}>
+                  SIGN UP NOW
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="project-info-section">
+        <div className="container">
+          <div className="project-info-grid">
+            <div className="pi-col">
+              <div className="pi-head">PROJECT</div>
+              <p className="pi-text">
+                CLASS FC 공식 웹사이트는 소프트웨어학과 축구 동아리의 활동을 한 곳에서 지원하는 단일
+                웹 플랫폼입니다. React 프론트엔드와 Node.js · MySQL 백엔드로 만들었습니다.
+              </p>
+            </div>
+            <div className="pi-col">
+              <div className="pi-head">FEATURES</div>
+              <ul className="pi-list">
+                <li>선수단 · 포지션별 프로필</li>
+                <li>경기 일정 · 참석 체크</li>
+                <li>스쿼드 메이커 · 라인업</li>
+                <li>통계 · MOTM 투표</li>
+                <li>공지 · 댓글</li>
+                <li>갤러리</li>
+              </ul>
+            </div>
+            <div className="pi-col">
+              <div className="pi-head">TEAM CLASS</div>
+              <ul className="pi-list">
+                <li>차형창 · Hyeong-chang Cha</li>
+                <li>이성준 · Seong-jun Lee</li>
+                <li>김태효 · Tae-hyo Kim</li>
+              </ul>
+              <div className="pi-stack">React · Node.js · Express · MySQL</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Home;

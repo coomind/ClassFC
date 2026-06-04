@@ -1,0 +1,402 @@
+.admin-page {
+    min-height: 80vh;
+}
+
+.admin-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.admin-sidebar {
+    width: 200px;
+}
+
+.admin-side-btn {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding: 12px 14px;
+    color: lightgray;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.admin-side-btn:hover {
+    background-color: var(--card);
+    color: white;
+}
+
+.admin-side-btn.active {
+    background-color: var(--card);
+    color: var(--light);
+    border-left: 2px solid var(--color);
+}
+
+.admin-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-stats-grid {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.admin-stat-card {
+    flex: 1;
+    min-width: 160px;
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 6px;
+    padding: 18px;
+}
+
+.adm-stat-label {
+    color: var(--gray);
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.adm-stat-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    color: var(--light);
+    margin-bottom: 6px;
+}
+
+.adm-stat-sub {
+    color: var(--dark-gray);
+    font-size: 0.75rem;
+}
+
+.admin-section-block {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.admin-block-title {
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 12px 10px;
+    color: var(--gray);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.admin-table td {
+    padding: 14px 10px;
+    color: lightgray;
+    font-size: 0.88rem;
+    border-bottom: 1px solid var(--card);
+}
+
+.admin-table tr:hover td {
+    background-color: var(--card);
+}
+
+.adm-cat {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.admin-form {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    padding: 24px;
+    border-radius: 6px;
+}
+
+.admin-check-row {
+    color: lightgray;
+    font-size: 0.85rem;
+}
+
+.admin-check-row label {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.admin-check-row input[type="checkbox"] {
+    accent-color: var(--color);
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.admin-result {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background-color: rgba(0, 209, 102, 0.1);
+    border: 1px solid var(--color);
+    color: var(--light);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.admin-empty {
+    padding: 32px;
+    text-align: center;
+    color: var(--gray);
+    background-color: var(--bg);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.adm-delete-btn {
+    background-color: transparent;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.adm-delete-btn:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+.adm-edit-btn {
+    background-color: transparent;
+    border: 1px solid var(--color);
+    color: var(--light);
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.adm-edit-btn:hover {
+    background-color: var(--color);
+    color: var(--bg);
+}
+
+.admin-toast {
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.admin-hint-box {
+    background-color: rgba(0, 209, 102, 0.07);
+    border: 1px dashed var(--color);
+    color: var(--light);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+.admin-hint-box strong {
+    color: white;
+}
+
+.edit-row td {
+    background-color: var(--card);
+    padding: 16px !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.badge-mini {
+    display: inline-block;
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.badge-mini-yt {
+    background-color: var(--danger);
+    color: white;
+}
+
+.adm-gal-thumb {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 44px;
+}
+
+.adm-gal-thumb img {
+    width: 64px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.adm-gal-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1rem;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+}
+
+.res-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.res-w { background-color: var(--color); color: var(--bg); }
+.res-l { background-color: var(--danger); color: white; }
+.res-d { background-color: var(--dark-gray); color: white; }
+
+textarea.form-control-fc {
+    resize: vertical;
+    min-height: 120px;
+}
+
+select.form-control-fc {
+    cursor: pointer;
+    padding-right: 36px;
+}
+
+select.form-control-fc option {
+    background-color: var(--card);
+    color: white;
+}
+
+.rsvp-admin-block {
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+}
+
+.rsvp-admin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.rsvp-admin-date {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    color: var(--light);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.rsvp-admin-vs {
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.rsvp-admin-totals {
+    text-align: right;
+}
+
+.rsvp-admin-grid {
+    display: flex;
+    gap: 18px;
+}
+
+.rsvp-admin-grid > div {
+    flex: 1;
+}
+
+.rsvp-admin-col-title {
+    color: var(--light);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.rsvp-admin-col-title.late-col {
+    color: var(--accent);
+}
+
+.rsvp-admin-empty {
+    color: var(--dark-gray);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.rsvp-name-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rsvp-name-list li {
+    color: lightgray;
+    font-size: 0.88rem;
+    padding: 5px 10px;
+    background-color: var(--bg);
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+    .admin-layout { flex-direction: column; }
+    .admin-sidebar { width: 100%; }
+    .admin-side-btn { display: inline-block; width: auto; margin-right: 6px; }
+    .admin-table { font-size: 0.8rem; }
+}

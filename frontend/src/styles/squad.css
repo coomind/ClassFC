@@ -1,0 +1,600 @@
+.squad-page {
+    padding: 60px 0 80px;
+    min-height: 80vh;
+}
+
+.squad-container {
+    max-width: 1320px;
+}
+
+.squad-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.squad-sub {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    max-width: 600px;
+}
+
+.squad-hint-inline {
+    display: inline-block;
+    color: var(--light);
+    font-size: 0.78rem;
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+}
+
+.squad-type-tabs {
+    background-color: var(--card);
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.sq-type {
+    background-color: transparent;
+    border: none;
+    color: lightgray;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sq-type:hover {
+    color: white;
+}
+
+.sq-type.active {
+    background-color: var(--color);
+    color: var(--bg);
+}
+
+.squad-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.squad-sidebar {
+    width: 360px;
+    background-color: var(--card);
+    border: 1px solid var(--dark-gray);
+    border-radius: 8px;
+    padding: 22px;
+    position: sticky;
+    top: 150px;
+}
+
+.squad-control-block {
+    margin-bottom: 18px;
+}
+
+.squad-progress {
+    color: lightgray;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.squad-progress-bar {
+    height: 6px;
+    background-color: var(--bg);
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.squad-progress-fill {
+    height: 100%;
+    background-color: var(--color);
+}
+
+.squad-members-block {
+    margin-bottom: 18px;
+}
+
+.squad-members-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.squad-hint {
+    font-size: 0.7rem;
+    color: var(--light);
+    letter-spacing: 0.5px;
+}
+
+.squad-search {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.squad-members-list {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+    border: 1px dashed transparent;
+    border-radius: 4px;
+}
+
+.squad-members-list.drop-target {
+    border-color: var(--danger);
+    background-color: rgba(255, 77, 94, 0.05);
+}
+
+.squad-mem-row {
+    width: 100%;
+    background-color: var(--bg);
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    padding: 9px 12px;
+    border-radius: 4px;
+    cursor: grab;
+    font-size: 0.88rem;
+    text-align: left;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.squad-mem-row:active {
+    cursor: grabbing;
+}
+
+.squad-mem-row:hover {
+    border-color: var(--color);
+}
+
+.squad-mem-row.used {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.squad-mem-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    color: var(--light);
+    min-width: 28px;
+    font-size: 1.05rem;
+}
+
+.squad-mem-name {
+    flex: 1;
+    font-weight: 600;
+    color: white;
+}
+
+.squad-mem-pos {
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.squad-used-tag {
+    font-size: 0.65rem;
+    color: var(--gray);
+}
+
+.squad-empty-list {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.85rem;
+    padding: 20px;
+}
+
+.squad-reset-btn {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--dark-gray);
+    color: lightgray;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+.squad-reset-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.squad-publish {
+    background-color: var(--bg);
+    border: 1px solid var(--color);
+    border-radius: 6px;
+    padding: 14px;
+}
+
+.squad-publish-btn {
+    margin-top: 8px;
+    padding: 10px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.squad-publish-msg {
+    background-color: rgba(0, 209, 102, 0.12);
+    color: var(--light);
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-top: 6px;
+}
+
+.squad-pitch-wrap {
+    flex: 1;
+}
+
+.squad-pitch {
+    position: relative;
+    width: 100%;
+    padding-bottom: 130%;
+    background-color: #0d3d22;
+    border: 2px solid var(--dark-gray);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.squad-pitch.type-futsal {
+    padding-bottom: 125%;
+    background-color: #112d4e;
+}
+
+.pitch-line {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.center-line {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.pitch-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22%;
+    padding-bottom: 22%;
+    margin-top: -11%;
+    margin-left: -11%;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+}
+
+.pitch-box {
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    height: 16%;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.top-box { top: 0; border-top: none; }
+.bottom-box { bottom: 0; border-bottom: none; }
+
+.pitch-small-box {
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    height: 7%;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.top-small { top: 0; border-top: none; }
+.bottom-small { bottom: 0; border-bottom: none; }
+
+.pitch-arc {
+    display: none;
+}
+
+.pitch-slot {
+    position: absolute;
+    width: 86px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: -43px;
+    margin-top: -35px;
+    z-index: 2;
+}
+
+.pitch-slot.selected .pitch-shirt {
+    border-color: var(--light);
+}
+
+.pitch-slot-label {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: var(--gray);
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+
+.pitch-shirt {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto;
+    background-color: white;
+    border: 2px solid black;
+    text-align: center;
+    line-height: 56px;
+    clip-path: polygon(
+        0 18%, 24% 18%, 30% 0, 70% 0, 76% 18%,
+        100% 18%, 100% 36%, 80% 36%, 80% 100%, 20% 100%, 20% 36%, 0 36%
+    );
+}
+
+.pitch-slot.empty .pitch-shirt {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--dark-gray);
+}
+
+.pitch-slot.filled .pitch-shirt {
+    border-color: black;
+    cursor: grab;
+}
+
+.pitch-slot.filled .pitch-shirt:active {
+    cursor: grabbing;
+}
+
+.pitch-slot.drag-over .pitch-shirt {
+    border-color: var(--light);
+    background-color: rgba(101, 244, 162, 0.4) !important;
+}
+
+.pitch-slot.dragging .pitch-shirt {
+    opacity: 0.35;
+}
+
+.pitch-shirt-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--bg);
+    line-height: 1;
+    padding-top: 18px;
+    display: inline-block;
+}
+
+.pitch-shirt-empty {
+    font-size: 1.6rem;
+    color: var(--gray);
+    line-height: 1;
+    padding-top: 16px;
+    display: inline-block;
+}
+
+.pitch-slot-name {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    max-width: 92px;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pitch-slot.empty .pitch-slot-name {
+    color: var(--gray);
+}
+
+.squad-pitch-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: var(--card);
+    border-radius: 6px;
+    border: 1px solid var(--dark-gray);
+    margin-top: 12px;
+}
+
+.squad-formation-label {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--light);
+    letter-spacing: 3px;
+}
+
+.squad-type-label {
+    color: var(--gray);
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+}
+
+.match-lineup-block {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.lineup-toggle-btn {
+    width: 100%;
+    background-color: var(--bg);
+    border: 1px solid var(--color);
+    color: var(--light);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.lineup-toggle-btn:hover {
+    background-color: rgba(0, 209, 102, 0.1);
+}
+
+.lineup-toggle-icon {
+    margin-right: 10px;
+}
+
+.lineup-toggle-arrow {
+    float: right;
+    font-size: 0.75rem;
+}
+
+.lineup-display {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.lineup-pitch {
+    position: relative;
+    width: 100%;
+    padding-bottom: 130%;
+    background-color: #0d3d22;
+    border: 1px solid var(--dark-gray);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.lineup-pitch.type-futsal {
+    padding-bottom: 125%;
+    background-color: #112d4e;
+}
+
+.lineup-slot {
+    position: absolute;
+    width: 64px;
+    text-align: center;
+    margin-left: -32px;
+    margin-top: -25px;
+    z-index: 2;
+}
+
+.lineup-pos {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: var(--light);
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 0.6rem;
+    padding: 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+}
+
+.lineup-slot.empty .lineup-pos {
+    color: var(--gray);
+}
+
+.lineup-shirt {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 34px;
+    clip-path: polygon(
+        0 18%, 24% 18%, 30% 0, 70% 0, 76% 18%,
+        100% 18%, 100% 36%, 80% 36%, 80% 100%, 20% 100%, 20% 36%, 0 36%
+    );
+}
+
+.lineup-slot.empty .lineup-shirt {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lineup-num {
+    font-family: 'NEXON Football Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--bg);
+    line-height: 1;
+    padding-top: 10px;
+    display: inline-block;
+}
+
+.lineup-slot.empty .lineup-num {
+    color: var(--gray);
+}
+
+.lineup-name {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.62rem;
+    padding: 1px 5px;
+    border-radius: 2px;
+    max-width: 70px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lineup-meta {
+    margin-top: 10px;
+    font-size: 0.78rem;
+}
+
+.lineup-meta-form {
+    display: inline-block;
+    background-color: var(--color);
+    color: var(--bg);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-right: 8px;
+}
+
+.lineup-meta-type {
+    color: lightgray;
+    letter-spacing: 1px;
+    margin-right: 8px;
+}
+
+.lineup-meta-by {
+    color: var(--gray);
+    font-size: 0.72rem;
+    float: right;
+}
+
+@media (max-width: 1000px) {
+    .squad-layout { flex-direction: column; }
+    .squad-sidebar { width: 100%; position: static; }
+    .squad-pitch, .lineup-pitch { max-width: 540px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+    .pitch-shirt { width: 40px; height: 40px; line-height: 40px; }
+    .pitch-shirt-num { font-size: 1rem; }
+    .pitch-slot-label { font-size: 0.62rem; padding: 1px 5px; }
+    .pitch-slot-name { font-size: 0.65rem; padding: 2px 6px; max-width: 72px; }
+    .pitch-slot { width: 64px; margin-left: -32px; }
+}
