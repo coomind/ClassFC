@@ -78,29 +78,22 @@ import JerseyIcon from "./JerseyIcon";
 
 function MemberCard({ member, onClick }) {
   const motmCount = member.motm || 0;
-  const memberColor = positionColor[member.position];
-
-  const openMember = () => {
-    onClick(member);
-  };
 
   return (
-    <div className="member-card card-fc" onClick={openMember}>
+    <div className="member-card card-fc" onClick={() => onClick(member)}>
       <div className="member-card-top">
         <div
           className="member-pos-badge"
           style={{
-            background: memberColor + "22",
-            color: memberColor,
+            background: positionColor[member.position] + "22",
+            color: positionColor[member.position]
           }}
         >
           {member.position}
         </div>
       </div>
 
-      {motmCount > 0 && (
-        <div className="member-motm-badge">★ MOTM × {motmCount}</div>
-      )}
+      {motmCount > 0 && <div className="member-motm-badge">★ MOTM × {motmCount}</div>}
 
       <div className="member-avatar">
         <JerseyIcon number={member.number} color="#ffffff" size={140} />
@@ -109,19 +102,14 @@ function MemberCard({ member, onClick }) {
       <div className="member-card-body">
         <div className="member-name">{member.name}</div>
         <div className="member-name-en">{member.nameEn}</div>
-
-        {member.role !== "Member" && (
-          <div className="member-role-tag">{member.role}</div>
-        )}
+        {member.role !== "Member" && <div className="member-role-tag">{member.role}</div>}
       </div>
 
-      {/* 선수 기록 */}
       <div className="member-card-stats">
         <div className="stat-block">
           <div className="stat-num">{member.matches}</div>
           <div className="stat-label">MATCHES</div>
         </div>
-
         {member.position === "GK" ? (
           <div className="stat-block">
             <div className="stat-num">{member.cleanSheets || 0}</div>
@@ -133,7 +121,6 @@ function MemberCard({ member, onClick }) {
               <div className="stat-num">{member.goals}</div>
               <div className="stat-label">GOALS</div>
             </div>
-
             <div className="stat-block">
               <div className="stat-num">{member.assists}</div>
               <div className="stat-label">ASSISTS</div>
