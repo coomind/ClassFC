@@ -1,6 +1,64 @@
 import { categoryColors } from "../data/constants";
 
 function NoticeCard({ notice, onClick, compact }) {
+  const tagColor = categoryColors[notice.category] || "#00d166";
+
+  const openNotice = () => {
+    onClick(notice);
+  };
+
+  return (
+    <div
+      className={`notice-card card-fc ${compact ? "compact" : ""}`}
+      onClick={openNotice}
+    >
+      {/* 공지 태그 */}
+      <div className="notice-card-row">
+        <div className="notice-tags">
+          {notice.pinned && (
+            <span className="notice-pin-tag">PINNED</span>
+          )}
+
+          <span
+            className="notice-cat-tag"
+            style={{
+              background: tagColor + "22",
+              color: tagColor,
+            }}
+          >
+            {notice.category}
+          </span>
+
+          {notice.important && (
+            <span className="notice-imp-tag">중요</span>
+          )}
+        </div>
+
+        <div className="notice-date">{notice.date}</div>
+      </div>
+
+      <div className="notice-title">{notice.title}</div>
+
+      {/* 공지 미리보기 */}
+      {!compact && (
+        <div className="notice-preview">
+          {notice.content.substring(0, 95)}...
+        </div>
+      )}
+
+      <div className="notice-author">
+        by {notice.author}
+      </div>
+    </div>
+  );
+}
+
+export default NoticeCard;
+
+/*
+import { categoryColors } from "../data/constants";
+
+function NoticeCard({ notice, onClick, compact }) {
   const color = categoryColors[notice.category] || "#00d166";
 
   return (
@@ -29,3 +87,4 @@ function NoticeCard({ notice, onClick, compact }) {
 }
 
 export default NoticeCard;
+*/
