@@ -13,17 +13,28 @@ router.get("/", async (req, res) => {
   res.json(rows);
 });
 
+// 갤러리 등록 — 관리자만
 router.post("/", auth, adminOnly, async (req, res) => {
   const { title, tag, imageUrl, mediaType, gradient, icon, date } = req.body || {};
-  const mt = mediaType === "youtube" ? "youtube" : "image";
-  const [r] = await pool.query(
+  // mediaType은 youtube / image 둘만 허용 (그 외 값은 image로)
+  const resolvedMediaType = mediaType === "youtube" ? "youtube" : "image";
+  const [result] = await pool.query(
     `INSERT INTO gallery (title, tag, image_url, media_type, gradient, icon, taken_date)
      VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    [title, tag || "Match", imageUrl || null, mt, gradient || null, icon || null, date || null]
+    [
+      title,
+      tag || "Match",
+      imageUrl || null,
+      resolvedMediaType,
+      gradient || null,
+      icon || null,
+      date || null,
+    ]
   );
-  res.json({ id: r.insertId });
+  res.json({ id: result.insertId });
 });
 
+// 갤러리 삭제 — 관리자만
 router.delete("/:id", auth, adminOnly, async (req, res) => {
   await pool.query("DELETE FROM gallery WHERE id = ?", [req.params.id]);
   res.json({ ok: true });
