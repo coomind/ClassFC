@@ -9,7 +9,8 @@ function Login({ onLogin, setPage }) {
   const [password, setPassword] = useState("");
   const [signupName, setSignupName] = useState("");
   const [signupNumber, setSignupNumber] = useState("");
-  const [signupEmail, setSignupEmail] = useState("");
+  const [signupYear, setSignupYear] = useState("");
+  const [signupPosition, setSignupPosition] = useState("MF");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [busy, setBusy] = useState(false);
@@ -26,7 +27,12 @@ function Login({ onLogin, setPage }) {
       const r = await api.post("/api/auth/login", { username, password });
       onLogin(r.user, r.token);
     } catch (e) {
-      setError("아이디 또는 비밀번호가 올바르지 않습니다.");
+      const msg = e.message || "";
+      if (msg.includes("pending approval")) {
+        setError("아직 관리자 승인 대기 중입니다.");
+      } else {
+        setError("아이디 또는 비밀번호가 올바르지 않습니다.");
+      }
     } finally {
       setBusy(false);
     }
@@ -37,7 +43,7 @@ function Login({ onLogin, setPage }) {
     setError("");
     setSuccess("");
 
-    if (!username || !password || !signupName || !signupNumber || !signupEmail) {
+    if (!username || !password || !signupName || !signupNumber || !signupYear || !signupPosition) {
       setError("모든 항목을 입력해 주세요.");
       return;
     }
@@ -48,18 +54,18 @@ function Login({ onLogin, setPage }) {
 
     setBusy(true);
     try {
-      const r = await api.post("/api/auth/signup", {
+      await api.post("/api/auth/signup", {
         username,
         password,
         name: signupName,
         number: signupNumber,
-        email: signupEmail
+        year: Number(signupYear),
+        position: signupPosition
       });
-      setSuccess("가입 완료! 자동 로그인합니다...");
-      setTimeout(() => onLogin(r.user, r.token), 800);
+      setSuccess("가입 신청이 접수되었습니다. 관리자 승인 후 로그인하실 수 있습니다.");
     } catch (e) {
       const msg = e.message || "";
-      if (msg.includes("already taken")) setError("이미 사용 중인 아이디 또는 이메일입니다.");
+      if (msg.includes("already taken")) setError("이미 사용 중인 아이디입니다.");
       else if (msg.includes("too short")) setError("비밀번호는 최소 6자 이상이어야 합니다.");
       else setError("가입에 실패했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
@@ -210,15 +216,30 @@ function Login({ onLogin, setPage }) {
                   </div>
                 </div>
 
-                <div className="mb-3">
-                  <label className="label-fc">이메일</label>
-                  <input
-                    type="email"
-                    className="form-control-fc"
-                    value={signupEmail}
-                    onChange={(e) => setSignupEmail(e.target.value)}
-                    placeholder="you@university.ac.kr"
-                  />
+                <div className="row">
+                  <div className="col-6 mb-3">
+                    <label className="label-fc">학번</label>
+                    <input
+                      type="number"
+                      className="form-control-fc"
+                      value={signupYear}
+                      onChange={(e) => setSignupYear(e.target.value)}
+                      placeholder="22"
+                    />
+                  </div>
+                  <div className="col-6 mb-3">
+                    <label className="label-fc">포지션</label>
+                    <select
+                      className="form-control-fc"
+                      value={signupPosition}
+                      onChange={(e) => setSignupPosition(e.target.value)}
+                    >
+                      <option value="GK">GK</option>
+                      <option value="DF">DF</option>
+                      <option value="MF">MF</option>
+                      <option value="FW">FW</option>
+                    </select>
+                  </div>
                 </div>
 
                 {error && <div className="login-error">{error}</div>}
