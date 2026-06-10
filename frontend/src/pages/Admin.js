@@ -72,6 +72,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
 
   const [newGallery, setNewGallery] = useState(emptyGallery());
 
+  //관리자 데이터 불러오기
   const loadAdminData = async () => {
     try {
       const [a, r, p] = await Promise.all([
@@ -87,6 +88,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
     }
   };
 
+  //가입 승인 처리
   const handleApprove = async (id) => {
     if (!window.confirm("이 가입 신청을 승인하고 선수단에 등록할까요?")) return;
     try {
@@ -114,11 +116,13 @@ function Admin({ members, matches, notices, gallery, reload }) {
     loadAdminData();
   }, []);
 
+  //처리 결과 메시지 표시
   const flash = (text) => {
     setMsg(text);
     setTimeout(() => setMsg(""), 2500);
   };
 
+  // 공지 등록
   const handlePost = async (e) => {
     e.preventDefault();
     if (!newTitle || !newContent) {
@@ -168,6 +172,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
     }
   };
 
+  // 경기 추가
   const handleAddMatch = async (e) => {
     e.preventDefault();
     if (!newMatch.opponent || !newMatch.date) {
@@ -235,7 +240,8 @@ function Admin({ members, matches, notices, gallery, reload }) {
       window.alert("삭제 실패: " + e.message);
     }
   };
-
+  
+  // 부원 추가
   const handleAddMember = async (e) => {
     e.preventDefault();
     if (!newMember.number || !newMember.name) {
@@ -303,6 +309,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
     }
   };
 
+  // 갤러리 추가
   const handleAddGallery = async (e) => {
     e.preventDefault();
     if (!newGallery.title || !newGallery.imageUrl) {
