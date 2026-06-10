@@ -117,6 +117,7 @@ function App() {
     );
   }
 
+  // 현재 선택된 페이지 보여주기
   let content;
 
   if (page === "home") {
@@ -192,6 +193,7 @@ function App() {
     return match.status === "upcoming" && matchTime > now;
   });
 
+  // 다음 경기가 있으면 상단 배너 표시
   const showBanner = !bannerClosed && hasUpcoming;
 
   return (
