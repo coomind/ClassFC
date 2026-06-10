@@ -1,6 +1,7 @@
 const express = require("express");
 const { pool } = require("../db");
 const { auth, adminOnly } = require("../auth");
+
 const router = express.Router();
 
 router.use(auth, adminOnly);
@@ -30,29 +31,26 @@ router.post("/accounts/:id/approve", async (req, res) => {
   const conn = await pool.getConnection();
   try {
     await conn.beginTransaction();
-
-    const [[a]] = await conn.query(
+    const [[account]] = await conn.query(
       "SELECT id, name, number, year, position FROM accounts WHERE id = ? AND status = 'pending'",
       [req.params.id]
     );
-    if (!a) {
+    if (!account) {
       await conn.rollback();
       return res.status(404).json({ error: "pending account not found" });
     }
-
+    // 상태를 approved로 바꾸고, 같은 정보로 members에도 등록
     await conn.query("UPDATE accounts SET status = 'approved' WHERE id = ?", [req.params.id]);
-
     await conn.query(
       `INSERT INTO members (account_id, number, name, position, role, year)
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [a.id, Number(a.number), a.name, a.position, "Member", a.year]
+      [account.id, Number(account.number), account.name, account.position, "Member", account.year]
     );
-
     await conn.commit();
     res.json({ ok: true });
-  } catch (e) {
+  } catch (err) {
     await conn.rollback();
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ error: err.message });
   } finally {
     conn.release();
   }
@@ -71,7 +69,9 @@ router.delete("/accounts/:id", async (req, res) => {
 
 router.put("/accounts/:id/role", async (req, res) => {
   const { role } = req.body || {};
-  if (role !== "admin" && role !== "member") return res.status(400).json({ error: "invalid role" });
+  if (role !== "admin" && role !== "member") {
+    return res.status(400).json({ error: "invalid role" });
+  }
   await pool.query("UPDATE accounts SET role = ? WHERE id = ?", [role, req.params.id]);
   res.json({ ok: true });
 });
@@ -81,10 +81,17 @@ router.get("/rsvp-summary", async (req, res) => {
     `SELECT r.match_id AS matchId, r.status, a.name, a.number, a.username
      FROM rsvp r JOIN accounts a ON a.id = r.account_id`
   );
+  // 경기별로 attend / late 명단을 묶기
   const byMatch = {};
-  for (const r of rows) {
-    if (!byMatch[r.matchId]) byMatch[r.matchId] = { attend: [], late: [] };
-    byMatch[r.matchId][r.status].push({ name: r.name, number: r.number, username: r.username });
+  for (const row of rows) {
+    if (!byMatch[row.matchId]) {
+      byMatch[row.matchId] = { attend: [], late: [] };
+    }
+    byMatch[row.matchId][row.status].push({
+      name: row.name,
+      number: row.number,
+      username: row.username,
+    });
   }
   res.json(byMatch);
 });
