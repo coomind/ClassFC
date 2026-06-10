@@ -48,7 +48,7 @@ router.get("/:id", async (req, res) => {
   res.json(rows[0]);
 });
 
-// 선수 등록 — 관리자만
+// 선수 등록 - 관리자만
 router.post("/", auth, adminOnly, async (req, res) => {
   const { number, name, nameEn, position, role, year, bio, goals, assists, cleanSheets, matches } =
     req.body || {};
