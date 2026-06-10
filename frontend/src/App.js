@@ -24,43 +24,57 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
 
+  // 전체 데이터 불러오기
   const loadAll = async () => {
     setLoadError(null);
+
     try {
-      const [ms, mt, ns, gs] = await Promise.all([
+      const [memberList, matchList, noticeList, galleryList] = await Promise.all([
         api.get("/api/members"),
         api.get("/api/matches"),
         api.get("/api/notices"),
-        api.get("/api/gallery")
+        api.get("/api/gallery"),
       ]);
-      setMembers(ms);
-      setMatches(mt);
-      setNotices(ns);
-      setGallery(gs);
+
+      setMembers(memberList);
+      setMatches(matchList);
+      setNotices(noticeList);
+      setGallery(galleryList);
       setLoading(false);
-    } catch (e) {
-      setLoadError(e.message || "서버에 연결할 수 없습니다.");
+    } catch (error) {
+      setLoadError(error.message || "서버에 연결할 수 없습니다.");
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    // 로그인 토큰 확인
     const token = localStorage.getItem("classfc_token");
+
     if (token) {
       api
         .get("/api/auth/me")
         .then((me) => {
-          if (me) setUser(me);
+          if (me) {
+            setUser(me);
+          }
         })
-        .catch(() => localStorage.removeItem("classfc_token"));
+        .catch(() => {
+          localStorage.removeItem("classfc_token");
+        });
     }
+
     loadAll();
   }, []);
 
-  const handleLogin = (u, token) => {
-    setUser(u);
-    localStorage.setItem("classfc_user", JSON.stringify(u));
-    if (token) localStorage.setItem("classfc_token", token);
+  const handleLogin = (loginUser, token) => {
+    setUser(loginUser);
+    localStorage.setItem("classfc_user", JSON.stringify(loginUser));
+
+    if (token) {
+      localStorage.setItem("classfc_token", token);
+    }
+
     setPage("home");
   };
 
@@ -94,6 +108,7 @@ function App() {
           <img src={logo} alt="CLASS FC" className="app-loading-logo" />
           <div className="app-loading-title">연결 실패</div>
           <div className="app-loading-err">{loadError}</div>
+
           <button className="btn-primary-green mt-3" onClick={loadAll}>
             다시 시도
           </button>
@@ -103,6 +118,7 @@ function App() {
   }
 
   let content;
+
   if (page === "home") {
     content = (
       <Home
@@ -144,7 +160,11 @@ function App() {
         <div className="container page-section text-center">
           <h2 className="section-title">ACCESS DENIED</h2>
           <p className="text-secondary mt-3">관리자 계정으로 로그인하세요.</p>
-          <button className="btn-primary-green mt-4" onClick={() => setPage("login")}>
+
+          <button
+            className="btn-primary-green mt-4"
+            onClick={() => setPage("login")}
+          >
             LOGIN
           </button>
         </div>
@@ -164,17 +184,31 @@ function App() {
   }
 
   const bannerClosed = sessionStorage.getItem("classfc_banner_closed") === "1";
-  const nowMs = Date.now();
-  const hasUpcoming = matches.some(
-    (m) => m.status === "upcoming" && new Date(`${m.date}T${m.time}:00`).getTime() > nowMs
-  );
+  const now = Date.now();
+
+  const hasUpcoming = matches.some((match) => {
+    const matchTime = new Date(`${match.date}T${match.time}:00`).getTime();
+
+    return match.status === "upcoming" && matchTime > now;
+  });
+
   const showBanner = !bannerClosed && hasUpcoming;
 
   return (
     <>
-      <Navbar page={page} setPage={setPage} user={user} onLogout={handleLogout} />
+      <Navbar
+        page={page}
+        setPage={setPage}
+        user={user}
+        onLogout={handleLogout}
+      />
+
       <CountdownBanner setPage={setPage} matches={matches} />
-      <main className={showBanner ? "app-main with-banner" : "app-main"}>{content}</main>
+
+      <main className={showBanner ? "app-main with-banner" : "app-main"}>
+        {content}
+      </main>
+
       <Footer />
     </>
   );
