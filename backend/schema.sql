@@ -1,5 +1,6 @@
 SET NAMES utf8mb4;
 
+-- 기존 테이블 삭제
 DROP TABLE IF EXISTS lineup_slots;
 DROP TABLE IF EXISTS lineups;
 DROP TABLE IF EXISTS motm_votes;
@@ -11,6 +12,7 @@ DROP TABLE IF EXISTS gallery;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS accounts;
 
+-- 계정 테이블
 CREATE TABLE accounts (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(40) UNIQUE NOT NULL,
@@ -22,6 +24,7 @@ CREATE TABLE accounts (
   joined_at DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 선수단 테이블
 CREATE TABLE members (
   id INT AUTO_INCREMENT PRIMARY KEY,
   account_id INT,
@@ -39,6 +42,7 @@ CREATE TABLE members (
   FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 경기 테이블
 CREATE TABLE matches (
   id INT AUTO_INCREMENT PRIMARY KEY,
   match_date DATE NOT NULL,
@@ -57,6 +61,7 @@ CREATE TABLE matches (
   INDEX idx_sport (sport)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 공지 테이블
 CREATE TABLE notices (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(200) NOT NULL,
@@ -71,6 +76,7 @@ CREATE TABLE notices (
   INDEX idx_cat (category, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 댓글 테이블
 CREATE TABLE comments (
   id INT AUTO_INCREMENT PRIMARY KEY,
   notice_id INT NOT NULL,
@@ -84,6 +90,7 @@ CREATE TABLE comments (
   INDEX idx_notice (notice_id, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 참석 체크 테이블
 CREATE TABLE rsvp (
   id INT AUTO_INCREMENT PRIMARY KEY,
   match_id INT NOT NULL,
@@ -95,6 +102,7 @@ CREATE TABLE rsvp (
   FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- MOTM 투표 테이블
 CREATE TABLE motm_votes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   match_id INT NOT NULL,
@@ -107,6 +115,7 @@ CREATE TABLE motm_votes (
   FOREIGN KEY (voted_member_id) REFERENCES members(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 라인업 테이블
 CREATE TABLE lineups (
   id INT AUTO_INCREMENT PRIMARY KEY,
   match_id INT NOT NULL UNIQUE,
@@ -118,6 +127,7 @@ CREATE TABLE lineups (
   FOREIGN KEY (published_by) REFERENCES accounts(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 라인업 슬롯 테이블
 CREATE TABLE lineup_slots (
   id INT AUTO_INCREMENT PRIMARY KEY,
   lineup_id INT NOT NULL,
@@ -128,6 +138,7 @@ CREATE TABLE lineup_slots (
   FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 갤러리 테이블
 CREATE TABLE gallery (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(120) NOT NULL,
