@@ -52,6 +52,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
   const [section, setSection] = useState("dashboard");
   const [accounts, setAccounts] = useState([]);
   const [rsvpSummary, setRsvpSummary] = useState({});
+  const [pendingAccounts, setPendingAccounts] = useState([]);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState("");
 
@@ -73,14 +74,39 @@ function Admin({ members, matches, notices, gallery, reload }) {
 
   const loadAdminData = async () => {
     try {
-      const [a, r] = await Promise.all([
+      const [a, r, p] = await Promise.all([
         api.get("/api/admin/accounts"),
-        api.get("/api/admin/rsvp-summary")
+        api.get("/api/admin/rsvp-summary"),
+        api.get("/api/admin/pending-accounts")
       ]);
       setAccounts(a);
       setRsvpSummary(r);
+      setPendingAccounts(p);
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const handleApprove = async (id) => {
+    if (!window.confirm("이 가입 신청을 승인하고 선수단에 등록할까요?")) return;
+    try {
+      await api.post("/api/admin/accounts/" + id + "/approve");
+      await loadAdminData();
+      await reload();
+      flash("승인 완료. 선수단에 등록되었습니다.");
+    } catch (e) {
+      window.alert("승인 실패: " + e.message);
+    }
+  };
+
+  const handleReject = async (id) => {
+    if (!window.confirm("이 가입 신청을 거절하고 삭제할까요?")) return;
+    try {
+      await api.post("/api/admin/accounts/" + id + "/reject");
+      await loadAdminData();
+      flash("거절 완료");
+    } catch (e) {
+      window.alert("거절 실패: " + e.message);
     }
   };
 
@@ -369,6 +395,12 @@ function Admin({ members, matches, notices, gallery, reload }) {
             onClick={() => setSection("gallery")}
           >
             갤러리 관리
+          </button>
+          <button
+            className={section === "approval" ? "admin-side-btn active" : "admin-side-btn"}
+            onClick={() => setSection("approval")}
+          >
+            가입 승인 {pendingAccounts.length > 0 && `(${pendingAccounts.length})`}
           </button>
         </aside>
 
@@ -886,7 +918,6 @@ function Admin({ members, matches, notices, gallery, reload }) {
                       <th>아이디</th>
                       <th>이름</th>
                       <th>등번호</th>
-                      <th>이메일</th>
                       <th>역할</th>
                       <th>가입일</th>
                       <th>관리</th>
@@ -898,7 +929,6 @@ function Admin({ members, matches, notices, gallery, reload }) {
                         <td>{a.username}</td>
                         <td>{a.name}</td>
                         <td>{a.number}</td>
-                        <td>{a.email || "-"}</td>
                         <td>{a.role}</td>
                         <td>{a.joinedAt ? a.joinedAt.substring(0, 10) : "-"}</td>
                         <td>
@@ -1474,6 +1504,49 @@ function Admin({ members, matches, notices, gallery, reload }) {
                   </table>
                 )}
               </div>
+            </div>
+          )}
+
+          {section === "approval" && (
+            <div>
+              <h3 className="admin-block-title">가입 승인 대기 ({pendingAccounts.length})</h3>
+              {pendingAccounts.length === 0 ? (
+                <div className="admin-empty">대기 중인 가입 신청이 없습니다.</div>
+              ) : (
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>아이디</th>
+                      <th>이름</th>
+                      <th>등번호</th>
+                      <th>학번</th>
+                      <th>포지션</th>
+                      <th>신청일</th>
+                      <th>관리</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pendingAccounts.map((p) => (
+                      <tr key={p.id}>
+                        <td>{p.username}</td>
+                        <td>{p.name}</td>
+                        <td>#{p.number}</td>
+                        <td>{p.year}학번</td>
+                        <td>{p.position}</td>
+                        <td>{p.joinedAt ? p.joinedAt.substring(0, 10) : "-"}</td>
+                        <td>
+                          <button className="btn-primary-green" onClick={() => handleApprove(p.id)}>
+                            승인
+                          </button>{" "}
+                          <button className="adm-delete-btn" onClick={() => handleReject(p.id)}>
+                            거절
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           )}
         </main>
