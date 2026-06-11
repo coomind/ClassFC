@@ -416,11 +416,9 @@ function Admin({ members, matches, notices, gallery, reload }) {
             <div>
               <div className="admin-stats-grid">
                 <div className="admin-stat-card">
-                  <div className="adm-stat-label">전체 회원</div>
-                  <div className="adm-stat-num">{totalMembers}</div>
-                  <div className="adm-stat-sub">
-                    선수단 {members.length} + 가입 {accounts.length}
-                  </div>
+                  <div className="adm-stat-label">선수단 인원</div>
+                  <div className="adm-stat-num">{members.length}</div>
+                  <div className="adm-stat-sub">선수단 등록 기준</div>
                 </div>
                 <div className="admin-stat-card">
                   <div className="adm-stat-label">전체 공지</div>
@@ -432,15 +430,10 @@ function Admin({ members, matches, notices, gallery, reload }) {
                   <div className="adm-stat-num">{upcomingCount}</div>
                   <div className="adm-stat-sub">매주 정기 경기 진행 중</div>
                 </div>
-                <div className="admin-stat-card">
-                  <div className="adm-stat-label">사이트 가입자</div>
-                  <div className="adm-stat-num">{accounts.length}</div>
-                  <div className="adm-stat-sub">관리자 포함</div>
-                </div>
               </div>
 
               <div className="admin-section-block">
-                <h3 className="admin-block-title">최근 공지 5건</h3>
+                <h3 className="admin-block-title">최근 공지</h3>
                 <table className="admin-table">
                   <thead>
                     <tr>
