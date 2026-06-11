@@ -354,8 +354,6 @@ function Admin({ members, matches, notices, gallery, reload }) {
       window.alert("삭제 실패: " + e.message);
     }
   };
-
-  const totalMembers = members.length + accounts.length;
   const upcomingCount = matches.filter((m) => m.status === "upcoming").length;
 
   return (
