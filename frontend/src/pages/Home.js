@@ -264,10 +264,11 @@ function Home({ setPage, user, members, matches, notices, gallery }) {
 
           {gallery.length > 0 && (
             <div className="gallery-slide-dots">
-              {previewGallery.map((item, index) => (
+              {gallery.map((item, index) => (
                 <span
                   key={index}
-                  className={index === 0 ? "slide-dot active" : "slide-dot"}
+                  className={index === galleryOffset ? "slide-dot active" : "slide-dot"}
+                  onClick={() => setGalleryOffset(index)}
                 ></span>
               ))}
             </div>
