@@ -255,7 +255,7 @@ function Login({ onLogin, setPage }) {
                       className="form-control-fc"
                       value={signupYear}
                       onChange={(event) => setSignupYear(event.target.value)}
-                      placeholder="22"
+                      placeholder="XXXXXXXX"
                     />
                   </div>
 
