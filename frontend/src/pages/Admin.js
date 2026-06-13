@@ -351,7 +351,7 @@ function Admin({ members, matches, notices, gallery, reload }) {
       await reload();
       flash("삭제 완료");
     } catch (e) {
-      window.alert("삭제 실패: " + e.message);
+      window.alert("삭제 실패 : " + e.message);
     }
   };
   const upcomingCount = matches.filter((m) => m.status === "upcoming").length;
